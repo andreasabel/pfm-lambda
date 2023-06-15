@@ -16,15 +16,8 @@ on:
 
 jobs:
   build:
-    name: Agda ${{ matrix.agda }} on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - os: ubuntu-latest
-          agda: 2.6.3
+    name: Agda build & deploy
+    runs-on: ubuntu-latest
 
     steps:
 
@@ -35,7 +28,7 @@ jobs:
         uses: wenkokke/setup-agda@latest
         id:   setup
         with:
-          agda-version: ${{ matrix.agda }}
+          agda-version: '2.6.3'
           agda-stdlib-version: '1.7.1'
 
       - name: Cache build

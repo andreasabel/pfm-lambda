@@ -37,16 +37,15 @@ jobs:
         with:
           key: ${{ runner.os }}-agda-${{ steps.setup.outputs.agda-version }}
           path: |
-            src/_build
+            _build
             ~/.agda/libraries.d
 
       - name: Run Agda
-        working-directory: src
-        run: agda Main.agda --html
+        run: agda src/Main.agda --html
 
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: src/html
+          path: html
 
   # Deploy job, see https://github.com/actions/deploy-pages/tree/f81ad71d2e78487340fb3a94726f2a6050466efd#readme
   deploy:
